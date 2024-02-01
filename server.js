@@ -16,7 +16,7 @@ app.use(cors());
 
 app.use(slow({
   url: /\/films\/new$/i,
-  delay: 3000
+  delay: 1500,
 }));
 
 const Router = require('koa-router');
@@ -35,7 +35,7 @@ router.get('/films/new', async (ctx, next) => {
 
 app.use(router.routes()).use(router.allowedMethods());
 
-const port = 7070;
+const port = process.env.PORT || 7070;
 
 const server = http.createServer(app.callback());
 
